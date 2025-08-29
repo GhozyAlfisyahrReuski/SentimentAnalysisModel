@@ -1,146 +1,92 @@
 ---
 
-# 💬 Mental Health Statement Classification (NLP)
+# Mental Health Text Classifier
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-brightgreen.svg)
-![Framework](https://img.shields.io/badge/Framework-TensorFlow%2FKeras-orange.svg)
-![Model](https://img.shields.io/badge/Model-ANN-lightblue.svg)
-![Status](https://img.shields.io/badge/Status-Research--Prototype-yellow.svg)
-
----
+![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![Status](https://img.shields.io/badge/status-experimental-yellow.svg)
 
 ## Overview
 
-Mental health issues such as **depression, anxiety, stress, and suicidal tendencies** often remain hidden due to stigma and lack of awareness. Language — the words people use — can reveal subtle signals of emotional state.
+This project explores the use of Natural Language Processing (NLP) and Artificial Neural Networks (ANN) to classify mental health–related text. The system attempts to identify signals of mental health conditions (e.g., stressed, depressed, suicidal) from raw online statements.
 
-This project explores how **Natural Language Processing (NLP)** can classify online statements into different mental health categories.
-
-⚠**Disclaimer:**
-This is a **research prototype**. The current model is **not reliable for real-world sentiment or mental health prediction**. It cannot replace professional assessment and should not be used for clinical purposes.
+⚠**Disclosure:** At its current stage, the model is **not yet capable of performing full sentiment analysis**. Predictions may be incomplete or unreliable, especially for nuanced emotional states. This repository is primarily for **research and learning purposes**.
 
 ---
 
-## Repository Structure
+## Project Details
+
+### Tech Stack
+
+* **Language:** Python
+* **Libraries:** TensorFlow / Keras, scikit-learn, pandas, numpy
+* **Deployment:** [Hugging Face Spaces](https://huggingface.co/spaces/ghozyreuski/SentimentAnalysis)
+
+### Repository Structure
 
 ```
-MentalHealthNLP/
+mental-health-text-classifier/
 │
-├── notebooks/
-│   ├── preprocessing.ipynb      # Text preprocessing & cleaning
-│   ├── modeling.ipynb           # ANN modeling & evaluation
-│   ├── inference.ipynb          # Example inference pipeline
-│
-├── CombinedData.csv             # Dataset (statements + labels)
-├── requirements.txt             # Python dependencies
-└── README.md                    # Project documentation
+├── ann_text_classifier.h5   # Trained ANN model (HDF5 format)  
+├── final_ann_model.keras    # Saved ANN model (Keras format)  
+├── inference.ipynb          # Inference notebook for testing model predictions  
+├── label_encoder.pkl        # Label encoder for target classes  
+├── tokenizer.json           # Tokenizer for text preprocessing  
+└── README.md                # Project documentation  
 ```
-
----
-
-## Dataset
-
-* **Source:** [Kaggle Dataset](#) (collected from online statements, e.g., Twitter, Reddit)
-* **Size:** Thousands of rows
-* **Columns:**
-
-  * `Statement` → user’s text statement
-  * `Status` → mental health label (`normal, depressed, stressed, suicidal, anxiety, bipolar, personality disorder`)
-* **Target Grouping:** Optionally grouped into **3 risk levels** → Normal, Mild Risk, High Risk
 
 ---
 
 ## Methodology
 
-1. **Text Preprocessing**
+1. **Data Preparation** – Text cleaning, tokenization, padding sequences
+2. **Exploratory Analysis** – Word frequency, class distribution
+3. **Modeling** – Artificial Neural Network (ANN)
 
-   * Cleaning (punctuation, stopwords, lowercasing)
-   * Tokenization & padding
-   * Embedding layer preparation
-
-2. **Modeling**
-
-   * Baseline: Artificial Neural Network (ANN)
-   * Planned: Transformer-based models (BERT, RoBERTa)
-
-3. **Evaluation**
-
-   * Accuracy, F1-score, confusion matrix
-   * Word frequency analysis per label
-   * Top 10 words for each status group
-
-4. **Interpretation**
-
-   * Analysis of model misclassifications
-   * Identification of dataset imbalance (e.g., “normal” over-represented)
+   * Embedding Layer
+   * Dense layers with ReLU activation
+   * Output layer with Softmax
+4. **Evaluation** – Accuracy, confusion matrix, qualitative checks
+5. **Deployment** – Hosted as an interactive app on Hugging Face
 
 ---
 
-## Tech Stack
+## Dataset
 
-* **Language:** Python
-* **Frameworks:** TensorFlow / Keras, scikit-learn
-* **Libraries:** pandas, numpy, nltk, matplotlib, seaborn, re (regex)
+* **Source:** Online mental health text dataset (anonymized for privacy)
+* **Target Labels:** Categories such as *stressed*, *depressed*, *suicidal*, *normal*
 
 ---
 
 ## Results & Insights
 
-* The ANN baseline **struggled with critical categories** (e.g., suicidal ideation often misclassified as “normal”).
-* **Class imbalance** and **limited vocabulary diversity** reduced performance.
-* **Contextual nuances** like sarcasm or misspellings were not captured.
-
- Future Work:
-
-* Improve preprocessing (spelling correction, contextual embeddings)
-* Apply **transformer-based models (BERT, RoBERTa)** for better contextual understanding
-* Use **data augmentation** to reduce imbalance
-* Explore **multi-level risk classification** (Normal, Mild, High Risk)
+* The ANN shows **some ability** to distinguish between categories.
+* Struggles with subtle sentiment differences (e.g., *stressed vs. depressed*).
+* Needs improvement via larger dataset and model fine-tuning.
 
 ---
 
 ## Limitations
 
-* Dataset may not generalize beyond online text sources
-* No consideration of **tone, history, or external context**
-* Cannot be used for **diagnosis or real-time mental health monitoring**
-* Current model **does not perform reliable sentiment analysis yet**
-
----
-
-##  How to Run
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/MentalHealthNLP.git
-cd MentalHealthNLP
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run notebooks for preprocessing & training:
-
-```bash
-jupyter notebook notebooks/preprocessing.ipynb
-```
+* **Not yet a true sentiment analysis model.**
+* Limited dataset size → reduced generalization.
+* Not reliable for critical use cases (e.g., real suicide prevention systems).
 
 ---
 
 ## References
 
-* [NLP for Mental Health — arXiv](https://arxiv.org/abs/2309.13933)
-* [Text Classification with Deep Learning — arXiv](https://arxiv.org/abs/2003.11591)
-* Kaggle Dataset: Mental Health Statements
+* TensorFlow Documentation
+* Research papers on mental health NLP classification
 
 ---
 
- **Author**: Ghozy Reuski
+## Author
 
-* GitHub: [@GhozyAlfisyahrReuski](https://github.com/GhozyAlfisyahrReuski)
+👤 **Ghozy Reuski**
+
+* GitHub: [@ghozyreuski](https://github.com/ghozyreuski)
+* Hugging Face: [Sentiment Analysis App](https://huggingface.co/spaces/ghozyreuski/SentimentAnalysis)
 * LinkedIn: [Ghozy Alfisyahr Reuski](https://www.linkedin.com/in/ghozy-alfisyahr-reuski-1133481ba/)
 
 ---
