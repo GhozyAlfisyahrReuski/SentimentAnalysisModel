@@ -144,5 +144,3 @@ jupyter notebook notebooks/preprocessing.ipynb
 * LinkedIn: [Ghozy Alfisyahr Reuski](https://www.linkedin.com/in/ghozy-alfisyahr-reuski-1133481ba/)
 
 ---
-
-Do you want me to also **draft a one-page portfolio summary** (PDF-style, combining all projects with quick links) that you can attach to job/research applications?
